@@ -38,7 +38,9 @@ void bubblePass(int arr[], int n) {
 }
 
 void bubbleSort(int arr[], int n) {
-
+        for(int i = 0; i < n - 1; i++){
+                bubblePass(arr, n - 1);
+        }
 }
 
 
@@ -62,7 +64,7 @@ Step 2: implement insertionSort()
 */
 
 void insertionStep(string arr[], int currentIndex) {
-        int key = arr[currentIndex];
+        string key = arr[currentIndex];
         int j = currentIndex - 1;
 
         while(j >= 0 && arr[j] > key){
@@ -102,25 +104,35 @@ Step 3: Finally, use your two functions above to complete the following in newSo
 */
 
 void swap(double darray[], int index1, int index2) {
-        int temp = darray[index1];
+        double temp = darray[index1];
         darray[index1] = darray[index2];
         darray[index2] = temp;
 }
 
 int minFind(double darray[], int n) {
+        //start off the min as index 0
         int min = 0;
-        for(int i = 0; i < n - 1; i++){
+        //loop to that searches the entire array and finds the index with the smallest value
+        for(int i = 0; i < n; i++){
                 if(darray[i] < darray[min]){
                         min = i;
                 }
         }
+        //returns index with smallest element
     return min;
 }
 
 void newSort(double darray[], int n) {
-        for(int i = 0; i < n -1; i++){
-                int minIndex = minFind(darray + 1, n - if);
-                swap(darray, i, i + minIndex);
+        //loop that repeats for the size of the array
+        //minIndex is set to what minFind returns
+        for(int i = 0; i < n; i++){
+                //paramaters for minFind is a pointer to the current index i
+                //this is because minFind sets the smallest element as the first index
+                //so no need to check that one anymore
+                //n - i to decrease the size of array for each iterration
+                int minIndex = minFind(&darray[i], n - i);
+                swap(darray, i, i + minIndex); // swaps the current index (i) with the smallest found index
+                //i + minIndex is the index of the complete array to account that minFind is being called with a reduced array
         }
 
 }
