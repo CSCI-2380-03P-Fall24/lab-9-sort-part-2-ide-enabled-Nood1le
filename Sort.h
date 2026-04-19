@@ -29,7 +29,7 @@ void swapInt(int arr[], int i, int j) {
 }
 
 void bubblePass(int arr[], int n) {
-        for(int i = 0; i < n -1; i++){
+        for(int i = 0; i < n - 1; i++){
                 if(arr[i] > arr[i+1]){
                         swapInt(arr, i, i + 1);
                 }
@@ -38,8 +38,8 @@ void bubblePass(int arr[], int n) {
 }
 
 void bubbleSort(int arr[], int n) {
-        for(int i = 0; i < n - 1; i++){
-                bubblePass(arr, n - 1);
+        for(int i = 0; i < n; i++){
+                bubblePass(arr, n - i);
         }
 }
 
@@ -68,7 +68,7 @@ void insertionStep(string arr[], int currentIndex) {
         int j = currentIndex - 1;
 
         while(j >= 0 && arr[j] > key){
-                arr[j + currentIndex] = arr[j];
+                arr[j + 1] = arr[j];
                 j--;
         }
 
